@@ -1,6 +1,7 @@
 import { InvalidExpirationDateError } from "./Errors/InvalidExpirationDateError";
 
 export interface VaccinesProps {
+    id?: number,
     name: string;
     expirationDate: Date;
     manufactureDate: Date;
@@ -10,6 +11,10 @@ export interface VaccinesProps {
 export class Vaccines {
     private props: VaccinesProps;
 
+    get id(): string {
+        return this.props.name
+    }
+    
     get name(): string {
         return this.props.name
     }
