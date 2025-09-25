@@ -13,3 +13,36 @@ datasource db {
   provider = "postgresql"
   url      = env("DATABASE_URL")
 }
+
+model Pet {
+  id Int @id @default(autoincrement())
+  name String @db.VarChar(255)
+  image String @db.Text
+  active Boolean @default(true)
+  vaccinations Vaccinations[]
+}
+
+model Vaccines {
+  id Int @id @default(autoincrement())
+  name String @db.VarChar(255)
+  expirationDate DateTime
+  manufactureDate DateTime
+  batchNumber String @db.VarChar(191)
+  manufacturer String @db.VarChar(191)
+}
+
+model Veterinarians {
+  id Int @id @default(autoincrement())
+  crmv String @db.VarChar(191)
+  name String @db.VarChar(255)
+  vaccinations Vaccinations[]
+}
+
+model Vaccinations {
+  id Int @id @default(autoincrement())
+  nextDate DateTime
+  pet Pet @relation(fields: [petId], references: [id])
+  petId Int
+  veterinarian Veterinarians @relation(fields: veterinarianId, references: [id])
+  veterinarianId Int
+}
