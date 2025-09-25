@@ -48,5 +48,6 @@ export class Pet implements PetProps {
             ...props, active: props.active?? true
         }
     }
+        
 }
 
