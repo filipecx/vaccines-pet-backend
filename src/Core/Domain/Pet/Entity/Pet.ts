@@ -1,8 +1,10 @@
+import { EditPetError } from "./Errors/EditPetError";
+
 export interface PetProps {
     id?: number;
     name: string;
     image: string;
-    active: boolean;
+    active?: boolean;
 
 }
 
@@ -26,6 +28,9 @@ export class Pet implements PetProps {
     }
 
     changePetName(newName: string) {
+        if (newName.length < 2) {
+            throw new EditPetError('The name should have at least two characters')
+        }
         this.props.name = newName;
     }
 
@@ -39,7 +44,9 @@ export class Pet implements PetProps {
 
 
     constructor (props: PetProps) {
-        this.props = props
+        this.props = {
+            ...props, active: props.active?? true
+        }
     }
 }
 
