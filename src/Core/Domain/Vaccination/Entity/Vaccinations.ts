@@ -15,8 +15,8 @@ export interface VaccinationsProps {
 export class Vaccinations {
     private props: VaccinationsProps
 
-    get id(): number {
-        return this.id;
+    get id(): number | undefined{
+        return this.props.id;
     }
 
     get date(): Date {

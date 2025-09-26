@@ -11,8 +11,8 @@ export interface PetProps {
 export class Pet implements PetProps {
     private props: PetProps
 
-    get id ():number {
-        return this.id;
+    get id ():number | undefined {
+        return this.props.id;
     }
 
     get name():string {
@@ -23,8 +23,8 @@ export class Pet implements PetProps {
         return this.props.image
     }
 
-    get active():boolean {
-        return this.active
+    get active():boolean | undefined {
+        return this.props.active
     }
 
     validateName(name: string) {

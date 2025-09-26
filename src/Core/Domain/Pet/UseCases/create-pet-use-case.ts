@@ -17,7 +17,7 @@ export class CreatePet {
             image: request.image
 
         })
-        const created = await this.petRepository.createPet(newPet);
+        const created = await this.petRepository.createPet(newPet)
         return created;
     }
 }

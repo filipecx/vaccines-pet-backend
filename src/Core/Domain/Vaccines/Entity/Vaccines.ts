@@ -11,8 +11,8 @@ export interface VaccinesProps {
 export class Vaccines {
     private props: VaccinesProps;
 
-    get id(): string {
-        return this.props.name
+    get id(): number | undefined{
+        return this.props.id
     }
     
     get name(): string {

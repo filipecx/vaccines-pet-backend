@@ -1,4 +1,3 @@
-import { Pet } from "../../Pet/Entity/Pet";
 import { InvalidVeterinarianDataError } from "./Errors/InvalidVeterinarianDataError";
 
 export interface VeterinariansProps {
@@ -10,8 +9,8 @@ export interface VeterinariansProps {
 export class Veterinarians implements VeterinariansProps {
     private props: VeterinariansProps
 
-    get id(): number {
-        return this.id
+    get id(): number | undefined {
+        return this.props.id
     }
 
     get crmv(): string {
