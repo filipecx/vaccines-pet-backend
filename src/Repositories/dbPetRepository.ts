@@ -10,14 +10,21 @@ export class DbPetRepository implements PetRepository {
         return new DbPetRepository(prismaClient);
     }
     
-    async createPet(pet: Pet): Promise<void> {
-        await this.prisma.pet.create({
+    async createPet(pet: Pet): Promise<Pet> {
+        const petData = await this.prisma.pet.create({
             data: {
                 name: pet.name,
                 image: pet.image,
-                active: pet.active
+                //active: pet.active
             }
         })
+        const newPet = new Pet({
+            id: petData.id,
+            name: petData.name,
+            image: petData.image,
+            active: petData.active
+        })
+        return newPet
     }
 
     async getPetById(id: number): Promise<Pet> {
