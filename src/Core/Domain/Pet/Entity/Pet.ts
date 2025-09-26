@@ -16,21 +16,25 @@ export class Pet implements PetProps {
     }
 
     get name():string {
-        return this.name
+        return this.props.name
     }
 
     get image():string {
-        return this.image
+        return this.props.image
     }
 
     get active():boolean {
         return this.active
     }
 
-    changePetName(newName: string) {
-        if (newName.length < 2) {
+    validateName(name: string) {
+        if (name.length < 2) {
             throw new EditPetError('The name should have at least two characters')
         }
+    }
+
+    changePetName(newName: string) {
+        this.validateName(newName)
         this.props.name = newName;
     }
 
@@ -44,6 +48,7 @@ export class Pet implements PetProps {
 
 
     constructor (props: PetProps) {
+        this.validateName(props.name)
         this.props = {
             ...props, active: props.active?? true
         }
