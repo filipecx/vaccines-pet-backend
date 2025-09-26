@@ -65,5 +65,10 @@ export class DbPetRepository implements PetRepository {
         await this.prisma.pet.update({where: {id: id}, data: {active: active}})
     }
 
+    async deletePet(id: number): Promise<void> {
+        const exists = this.getPetById(id)
+        this.prisma.pet.delete({where: {id : id}})
+    }
+
 
 }
