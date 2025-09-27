@@ -4,14 +4,7 @@ import { VaccinesRepository } from "../../../Vaccines/Repositories/vaccinesRepos
 import { VaccinationRepository } from "../../Repository/vaccinationRepository";
 import { Vaccinations } from "../Vaccinations";
 
-export class CreateVaccinationUseCase {
-    constructor(
-        private vaccinationRepository: VaccinationRepository,
-        private petRepository: PetRepository,
-        private vaccinesRepository: VaccinesRepository
-    ){}
-
-    async execute(
+export interface VaccinationRequestDTO {
         petId: number,
         veterinarianName: string,
         veterinarianCrmv: string,
@@ -21,7 +14,27 @@ export class CreateVaccinationUseCase {
         batchNumber: string,
         manufacturer: string, 
         date: Date, 
-        nextDate: Date    
+        nextDate: Date 
+}
+
+export class CreateVaccinationUseCase {
+    constructor(
+        private vaccinationRepository: VaccinationRepository,
+        private petRepository: PetRepository,
+        private vaccinesRepository: VaccinesRepository
+    ){}
+
+    async execute(
+        {petId,
+        veterinarianName,
+        veterinarianCrmv,
+        vaccineName,
+        expirationDate,
+        manufactureDate,
+        batchNumber,
+        manufacturer, 
+        date, 
+        nextDate}: VaccinationRequestDTO 
     ): Promise<void> {
 
         const vaccine: Vaccines = new Vaccines({
