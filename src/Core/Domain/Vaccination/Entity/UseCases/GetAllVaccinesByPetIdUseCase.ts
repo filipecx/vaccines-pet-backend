@@ -2,7 +2,7 @@ import { VaccinationRepository } from "../../Repository/vaccinationRepository";
 import { VaccinationErrors } from "../Errors/VaccinationErrors";
 import { Vaccinations } from "../Vaccinations";
 
-export class GetAllVaccinesByPetIdUseCae {
+export class GetAllVaccinesByPetIdUseCase {
     constructor(private vaccinationRepository: VaccinationRepository){}
 
     async execute(id: number): Promise<Vaccinations[]> {
