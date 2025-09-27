@@ -30,20 +30,23 @@ model Vaccines {
   manufactureDate DateTime
   batchNumber String @db.VarChar(191)
   manufacturer String @db.VarChar(191)
+  vaccinations Vaccinations[]
 }
 
 model Veterinarians {
   id Int @id @default(autoincrement())
   crmv String @db.VarChar(191)
   name String @db.VarChar(255)
-  vaccinations Vaccinations[]
 }
 
 model Vaccinations {
   id Int @id @default(autoincrement())
+  date DateTime
   nextDate DateTime
   pet Pet @relation(fields: [petId], references: [id])
   petId Int
-  veterinarian Veterinarians @relation(fields: veterinarianId, references: [id])
-  veterinarianId Int
+  veterinarian String
+  veterinarianCrmv String
+  vaccines Vaccines @relation(fields: vaccineId, references: [id])
+  vaccineId Int
 }
