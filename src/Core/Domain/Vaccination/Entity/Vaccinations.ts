@@ -1,3 +1,4 @@
+import { Vaccines } from "../../Vaccines/Entity/Vaccines";
 import { Pet } from "../../Pet/Entity/Pet";
 import { Veterinarians } from "../../Veterinarian/Entity/Veterinarians";
 import { VaccinationErrors } from "./Errors/VaccinationErrors";
@@ -7,9 +8,10 @@ export interface VaccinationsProps {
     date: Date;
     nextDate: Date;
     pet: Pet;
-    veterinarian: Veterinarians;
-
-    
+    veterinarianName: string;
+    veterinarianCrmv: string
+    vaccine: Vaccines;
+    done?: boolean;
 }
 
 export class Vaccinations {
@@ -31,8 +33,20 @@ export class Vaccinations {
         return this.props.pet;
     }
 
-    get veterinarian(): Veterinarians {
-        return this.props.veterinarian;
+    get veterinarianName(): string {
+        return this.props.veterinarianName;
+    }
+
+    get veterinarianCrmv(): string {
+        return this.props.veterinarianCrmv;
+    }
+
+    get vaccine(): Vaccines {
+        return this.props.vaccine
+    }
+
+    get done(): boolean | undefined{
+        return this.props.done
     }
 
     validateVaccinationDate(date: Date, nextDate: Date): boolean {
