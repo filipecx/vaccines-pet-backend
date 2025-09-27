@@ -4,7 +4,7 @@ import { VaccinesRepository } from "../../../Vaccines/Repositories/vaccinesRepos
 import { VaccinationRepository } from "../../Repository/vaccinationRepository";
 import { Vaccinations } from "../Vaccinations";
 
-export class CreateVacctinationUseCase {
+export class CreateVaccinationUseCase {
     constructor(
         private vaccinationRepository: VaccinationRepository,
         private petRepository: PetRepository,
