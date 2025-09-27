@@ -4,18 +4,6 @@ import { VaccinesRepository } from "../../../Vaccines/Repositories/vaccinesRepos
 import { VaccinationRepository } from "../../Repository/vaccinationRepository";
 import { Vaccinations } from "../Vaccinations";
 
-export interface VaccinationRequestDTO {
-        petId: number,
-        veterinarianName: string,
-        veterinarianCrmv: string,
-        vaccineName: string,
-        expirationDate: Date,
-        manufactureDate: Date,
-        batchNumber: string,
-        manufacturer: string, 
-        date: Date, 
-        nextDate: Date 
-}
 
 export class CreateVaccinationUseCase {
     constructor(
@@ -24,43 +12,37 @@ export class CreateVaccinationUseCase {
         private vaccinesRepository: VaccinesRepository
     ){}
 
-    async execute(
-        {petId,
-        veterinarianName,
-        veterinarianCrmv,
-        vaccineName,
-        expirationDate,
-        manufactureDate,
-        batchNumber,
-        manufacturer, 
-        date, 
-        nextDate}: VaccinationRequestDTO 
-    ): Promise<void> {
+    async execute(vaccination: Vaccinations): Promise<void> {
+        //o melhor era ter um usecase de vaccine, pra chamar no controller e enviar já a vaccination toda pronta
 
         const vaccine: Vaccines = new Vaccines({
-            name: vaccineName,
-            expirationDate: expirationDate,
-            manufactureDate: manufactureDate,
-            batchNumber: batchNumber,
-            manufacturer: manufacturer
+            name: vaccination.vaccine.name,
+            expirationDate: vaccination.vaccine.expirationDate,
+            manufactureDate: vaccination.vaccine.manufactureDate,
+            batchNumber: vaccination.vaccine.batchNumber,
+            manufacturer: vaccination.vaccine.manufacturer
         })
         await this.vaccinesRepository.create(vaccine)
-       
-        const pet = await this.petRepository.getPetById(petId);
+
+        if (!vaccination.pet.id) {
+            throw new Error("No pet found")
+        }
+
+        const pet = await this.petRepository.getPetById(vaccination.pet.id);
          if (!pet) {
             throw new Error("No pet found")
         }
         
-        const vaccination = new Vaccinations({
-            date: date,
-            nextDate: nextDate,
+        const newVaccination = new Vaccinations({
+            date: vaccination.date,
+            nextDate: vaccination.nextDate,
             pet: pet,
-            veterinarianName: veterinarianName,
-            veterinarianCrmv: veterinarianCrmv,
+            veterinarianName: vaccination.veterinarianName,
+            veterinarianCrmv: vaccination.veterinarianCrmv,
             vaccine: vaccine
         })
 
-        await this.vaccinationRepository.createVaccination(vaccination)
+        await this.vaccinationRepository.createVaccination(newVaccination)
     }
 
 }
