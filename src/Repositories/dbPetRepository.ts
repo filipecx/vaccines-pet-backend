@@ -29,6 +29,9 @@ export class DbPetRepository implements PetRepository {
 
     async getPetById(id: number): Promise<Pet> {
         const data: any = await this.prisma.pet.findUnique({where: {id: id}})
+        if (!data) {
+            throw new Error("No pet found")
+        }
         const pet: Pet = new Pet({
             name: data.name,
             image: data.image,
