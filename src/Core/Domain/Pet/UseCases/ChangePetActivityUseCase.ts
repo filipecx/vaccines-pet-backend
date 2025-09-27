@@ -1,7 +1,7 @@
 import { PetRepository } from "../../../../Repositories/petRepository";
 import { PetNotFoundError } from "./Errors/petNotFoundError";
 
-export class UpdatePetUseCase {
+export class ChangeActivePetUseCase {
     constructor(private petRepository: PetRepository){}
 
     async execute(id: number, active: boolean) {
