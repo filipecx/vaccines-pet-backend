@@ -1,4 +1,4 @@
-import { InvalidExpirationDateError } from "./Errors/InvalidExpirationDateError";
+import { InvalidExpirationDateError } from "./Errors/InvalidExpirationDateError.ts";
 
 export interface VaccinesProps {
     id?: number,

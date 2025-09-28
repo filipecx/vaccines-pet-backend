@@ -1,4 +1,4 @@
-import { EditPetError } from "./Errors/EditPetError";
+import { EditPetError } from "./Errors/EditPetError.ts";
 
 export interface PetProps {
     id?: number;

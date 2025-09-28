@@ -1,6 +1,6 @@
-import { Pet } from "../Core/Domain/Pet/Entity/Pet";
+import { Pet } from "../Entity/Pet.ts";
 
-export interface PetRepository {
+export default interface PetRepository {
     createPet(pet: Pet): Promise<Pet>
     getPetById(id: number): Promise<Pet | null>
     getAllPets(): Promise<Pet[]>

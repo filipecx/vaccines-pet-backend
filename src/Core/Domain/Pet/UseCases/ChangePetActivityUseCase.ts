@@ -1,9 +1,11 @@
-import { PetRepository } from "../../../../Repositories/petRepository";
-import { PetNotFoundError } from "./Errors/petNotFoundError";
-
+import { PetNotFoundError } from "./Errors/petNotFoundError.ts";
+import type PetRepository  from "../Repositories/petRepository.ts";
 export class ChangeActivePetUseCase {
-    constructor(private petRepository: PetRepository){}
+    private petRepository: PetRepository
 
+    constructor(petRepository: PetRepository){
+        this.petRepository = petRepository
+    }
     async execute(id: number, active: boolean) {
         const petData = await this.petRepository.getPetById(id);
             if (!petData) {

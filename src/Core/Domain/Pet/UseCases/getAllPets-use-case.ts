@@ -1,9 +1,13 @@
-import { PetRepository } from "../../../../Repositories/petRepository"
-import { Pet } from "../Entity/Pet"
+import { Pet } from "../Entity/Pet.ts"
+import type PetRepository  from "../Repositories/petRepository.ts";
 
 export class GetAllPetsUseCase {
 
-    constructor(private petRepository: PetRepository){}
+    private petRepository: PetRepository
+
+    constructor(petRepository: PetRepository){
+        this.petRepository = petRepository
+    }
 
     async execute(): Promise<Pet[]> {
         const list = await this.petRepository.getAllPets();

@@ -1,14 +1,17 @@
-import { PetRepository } from "../../../../Repositories/petRepository";
-import { Pet } from "../Entity/Pet";
+import { Pet } from "../Entity/Pet.ts";
 
+import type PetRepository  from "../Repositories/petRepository.ts";
 export interface CreatePetRequest {
     name: string;
     image: string
 }
-type CreatePetResponse = Pet
 
 export class CreatePet {
-    constructor(private petRepository: PetRepository){}
+    private petRepository: PetRepository
+
+    constructor(petRepository: PetRepository){
+        this.petRepository = petRepository
+    }
 
     async execute(request: CreatePetRequest): Promise<Pet> {
 

@@ -1,6 +1,5 @@
-import { Pet } from "../../Pet/Entity/Pet";
-import { Veterinarians } from "../../Veterinarian/Entity/Veterinarians"
-import { Vaccinations } from "../Entity/Vaccinations"
+
+import { Vaccinations } from "../Entity/Vaccinations.ts"
 
 export interface VaccinationRepository {
    

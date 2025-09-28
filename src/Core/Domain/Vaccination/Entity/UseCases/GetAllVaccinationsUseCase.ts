@@ -1,10 +1,14 @@
-import { VaccinationRepository } from "../../Repository/vaccinationRepository";
-import { VaccinationErrors } from "../Errors/VaccinationErrors";
-import { Vaccinations } from "../Vaccinations";
+import { VaccinationRepository } from "../../Repository/vaccinationRepository.ts";
+import { VaccinationErrors } from "../Errors/VaccinationErrors.ts";
+import { Vaccinations } from "../Vaccinations.ts";
 
 export class GetAllVaccinationsUseCase {
-    constructor(private vaccinationRepository: VaccinationRepository) {}
-
+private vaccinationRepository: VaccinationRepository
+        
+        
+    constructor(vaccinationRepository: VaccinationRepository){
+        this.vaccinationRepository = vaccinationRepository;
+    }
     async execute(): Promise<Vaccinations[]>{
         const allVaccinations = this.vaccinationRepository.getAllVaccination()
         if (!allVaccinations) {

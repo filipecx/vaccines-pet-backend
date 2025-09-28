@@ -1,7 +1,7 @@
-import { Vaccines } from "../../Vaccines/Entity/Vaccines";
-import { Pet } from "../../Pet/Entity/Pet";
-import { Veterinarians } from "../../Veterinarian/Entity/Veterinarians";
-import { VaccinationErrors } from "./Errors/VaccinationErrors";
+import { Vaccines } from "../../Vaccines/Entity/Vaccines.ts";
+import { Pet } from "../../Pet/Entity/Pet.ts";
+import { Veterinarians } from "../../Veterinarian/Entity/Veterinarians.ts";
+import { VaccinationErrors } from "./Errors/VaccinationErrors.ts";
 
 export interface VaccinationsProps {
     id?: number;

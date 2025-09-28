@@ -1,10 +1,13 @@
-import { Pet } from "../Core/Domain/Pet/Entity/Pet";
-import { PetRepository } from "./petRepository";
+import { Pet } from "../Entity/Pet.ts"
+import type PetRepository  from "../Repositories/petRepository.ts";
 import { PrismaClient } from "@prisma/client";
 
 
 export class DbPetRepository implements PetRepository {
-    constructor(private prisma: PrismaClient) {}
+    private prisma: PrismaClient
+    constructor(prisma: PrismaClient) {
+        this.prisma = prisma
+    }
 
     public static create(prismaClient: PrismaClient) {
         return new DbPetRepository(prismaClient);

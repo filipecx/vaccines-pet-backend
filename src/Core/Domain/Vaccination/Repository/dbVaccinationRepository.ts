@@ -1,13 +1,15 @@
 import { PrismaClient } from "@prisma/client";
-import { VaccinationRepository } from "./vaccinationRepository";
-import { Pet } from "../../Pet/Entity/Pet";
-import { Veterinarians } from "../../Veterinarian/Entity/Veterinarians";
-import { Vaccinations } from "../Entity/Vaccinations";
-import { VaccinationErrors } from "../Entity/Errors/VaccinationErrors";
-import { Vaccines } from "../../Vaccines/Entity/Vaccines";
+import { VaccinationRepository } from "./vaccinationRepository.ts";
+import { Pet } from "../../Pet/Entity/Pet.ts";
+import { Vaccinations } from "../Entity/Vaccinations.ts";
+import { VaccinationErrors } from "../Entity/Errors/VaccinationErrors.ts";
+import { Vaccines } from "../../Vaccines/Entity/Vaccines.ts";
 
 export class DbVaccinationRepository implements VaccinationRepository {
-    constructor(private prisma: PrismaClient){}
+    private prisma: PrismaClient
+    constructor(prisma: PrismaClient) {
+        this.prisma = prisma
+    }
 
     async createVaccination(vaccination: Vaccinations): Promise<void> {
         

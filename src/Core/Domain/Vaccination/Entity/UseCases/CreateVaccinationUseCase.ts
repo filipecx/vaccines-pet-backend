@@ -1,16 +1,20 @@
-import { PetRepository } from "../../../../../Repositories/petRepository";
-import { Vaccines } from "../../../Vaccines/Entity/Vaccines";
-import { VaccinesRepository } from "../../../Vaccines/Repositories/vaccinesRepository";
-import { VaccinationRepository } from "../../Repository/vaccinationRepository";
-import { Vaccinations } from "../Vaccinations";
+import { PetRepository } from "../../../Pet/Repositories/petRepository.ts";
+import { Vaccines } from "../../../Vaccines/Entity/Vaccines.ts";
+import { VaccinesRepository } from "../../../Vaccines/Repositories/vaccinesRepository.ts";
+import { VaccinationRepository } from "../../Repository/vaccinationRepository.ts";
+import { Vaccinations } from "../Vaccinations.ts";
 
 
 export class CreateVaccinationUseCase {
-    constructor(
-        private vaccinationRepository: VaccinationRepository,
-        private petRepository: PetRepository,
-        private vaccinesRepository: VaccinesRepository
-    ){}
+    private vaccinationRepository: VaccinationRepository
+    private petRepository: PetRepository
+    private vaccinesRepository: VaccinesRepository
+    
+    constructor(vaccinationRepository: VaccinationRepository, petRepository: PetRepository, vaccinesRepository: VaccinesRepository){
+        this.petRepository = petRepository;
+        this.vaccinationRepository = vaccinationRepository;
+        this.vaccinesRepository = vaccinesRepository;
+    }
 
     async execute(vaccination: Vaccinations): Promise<void> {
         //o melhor era ter um usecase de vaccine, pra chamar no controller e enviar já a vaccination toda pronta

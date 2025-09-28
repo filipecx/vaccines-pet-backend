@@ -1,4 +1,4 @@
-import { InvalidVeterinarianDataError } from "./Errors/InvalidVeterinarianDataError";
+import { InvalidVeterinarianDataError } from "./Errors/InvalidVeterinarianDataError.ts";
 
 export interface VeterinariansProps {
     id?: number;

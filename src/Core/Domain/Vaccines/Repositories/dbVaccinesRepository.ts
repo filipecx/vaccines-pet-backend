@@ -1,11 +1,13 @@
 import { PrismaClient } from "@prisma/client";
-import { Vaccines } from "../Entity/Vaccines";
-import { VaccinesRepository } from "./vaccinesRepository";
-import { NoVaccinesError } from "../Entity/Errors/NoVaccinesError"
+import { Vaccines } from "../Entity/Vaccines.ts";
+import { VaccinesRepository } from "./vaccinesRepository.ts";
+import { NoVaccinesError } from "../Entity/Errors/NoVaccinesError.ts"
 
 export class DbVaccinesRepository implements VaccinesRepository {
-    constructor(private prisma: PrismaClient){}
-
+    private prisma: PrismaClient
+    constructor(prisma: PrismaClient) {
+        this.prisma = prisma
+    }
     async create(vaccine: Vaccines): Promise<Vaccines> {
         const vaccineData = await this.prisma.vaccines.create({
             data: {

@@ -1,4 +1,4 @@
-import { Vaccines } from "../Entity/Vaccines"
+import { Vaccines } from "../Entity/Vaccines.ts"
 
 export interface VaccinesRepository {
     create(vaccine: Vaccines): Promise<Vaccines>

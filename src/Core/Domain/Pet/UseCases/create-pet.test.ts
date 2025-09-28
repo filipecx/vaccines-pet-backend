@@ -1,9 +1,9 @@
-import { Pet } from "../Entity/Pet";
+import { Pet } from "../Entity/Pet.ts";
 import { describe, it, expect } from "vitest";
-import { CreatePet } from "./create-pet-use-case";
-import { DbPetRepository } from "../../../../Repositories/dbPetRepository";
+import { CreatePet } from "./create-pet-use-case.ts";
+import { DbPetRepository } from "../Repositories/dbPetRepository.ts";
 import { PrismaClient } from "@prisma/client";
-import { PetRepository } from "../../../../Repositories/petRepository";
+import { PetRepository } from "../Repositories/petRepository.ts";
 
 describe('tests for the create pet use-case', () => {
 
