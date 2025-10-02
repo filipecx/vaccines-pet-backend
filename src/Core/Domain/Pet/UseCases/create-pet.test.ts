@@ -3,8 +3,7 @@ import { describe, it, expect } from "vitest";
 import { CreatePet } from "./create-pet-use-case.ts";
 import { DbPetRepository } from "../Repositories/dbPetRepository.ts";
 import { PrismaClient } from "@prisma/client";
-import { PetRepository } from "../Repositories/petRepository.ts";
-
+import { PetRepository } from '../Repositories/petRepository.ts'
 describe('tests for the create pet use-case', () => {
 
     const prisma = new PrismaClient()

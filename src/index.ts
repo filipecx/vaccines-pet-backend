@@ -1,7 +1,7 @@
 import express from 'express'
 import { PrismaClient } from '@prisma/client'
 import cors from 'cors'
-import router from './src/Adapters/Routes/petRoutes.ts'
+import router from './Adapters/Routes/petRoutes.ts'
 const app = express()
 const port = 3000
 const prisma = new PrismaClient

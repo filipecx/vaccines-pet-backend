@@ -7,7 +7,9 @@ import { DeletePetUseCase } from '../../../Core/Domain/Pet/UseCases/DeletePetUse
 import { Pet } from '../../../Core/Domain/Pet/Entity/Pet.ts'
 import { DbPetRepository } from "../../../Core/Domain/Pet/Repositories/dbPetRepository.ts"
 import { PrismaClient } from '@prisma/client'
-import express, { Request, Response, NextFunction } from 'express';
+import type { Request, Response } from 'express'
+import express from 'express';
+const app = express;
 export interface PetRequest {
     name: string;
     image: string
@@ -29,7 +31,7 @@ const deltePetCase = new DeletePetUseCase(petRepository);
 
 
 
-    export async function createPet(request: Request, response: Response): Promise<void>{
+    export async function createPet( request: Request, response: Response): Promise<void>{
         try {
             await createPetCase.execute({
                 name: request.body.name,

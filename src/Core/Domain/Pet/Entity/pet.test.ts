@@ -1,4 +1,4 @@
-import { Pet, PetProps } from "./Pet";
+import { Pet, PetProps } from "./Pet.ts";
 import { test, describe, it, expect } from "vitest"
 
 describe('Pet entity tests', () => {
