@@ -5,15 +5,13 @@
 //deve dar erro se não tiver com dados completos do pet
 
 import { describe, it, expect } from "vitest";
-import { PetRepository } from "../../../../Repositories/petRepository";
 import { GetAllPetsUseCase } from "./getAllPets-use-case";
 import { GetPetByIdUseCase } from "./getPetByIdUseCase";
-import { DbPetRepository } from "../../../../Repositories/dbPetRepository";
 import { PrismaClient } from "@prisma/client";
-
+import { DbPetRepository } from "../Repositories/dbPetRepository.ts";
 describe('get all pets tests', () => {
     const prisma = new PrismaClient();
-    const petRepository: PetRepository = new DbPetRepository(prisma);
+    const petRepository: DbPetRepository = new DbPetRepository(prisma);
     const useCase = new GetAllPetsUseCase(petRepository);
     const getPetByIdUseCase = new GetPetByIdUseCase(petRepository);
 
