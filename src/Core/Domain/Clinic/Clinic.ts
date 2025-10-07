@@ -1,5 +1,4 @@
 import { InvalidClinicNameError } from './Erros/InvalidClinicNameError'
-import { CreateClinicError } from './Erros/CreateClinicError'
 import { Address } from '../ValueObjects/Address';
 
 export interface ClinicProps {
